@@ -43,7 +43,7 @@ sudo apt install -y numix-gtk-theme numix-icon-theme
 # sudo apt install hyper
 
 # install mail client
-sudo apt install -y mailspring
+# sudo apt install -y mailspring
 
 # install music player
 sudo apt install -y clementine
@@ -77,7 +77,7 @@ systemd-analyze
 # disable autostart service
 # systemctl disable <service>
 
-echo 'GRUB_BACKGROUND="/mnt/myfol/pictures/venom/venom2.jpg"' >> /etc/default/grub
+# echo 'GRUB_BACKGROUND="/mnt/myfol/pictures/venom/venom2.jpg"' >> /etc/default/grub
 
 # for asia fonts
 sudo apt-get install -y fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
