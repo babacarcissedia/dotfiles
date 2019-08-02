@@ -22,7 +22,7 @@ sudo apt-get install -y "php$PHP_VERSION"  "libapache2-mod-php$PHP_VERSION" "php
 	\ "php$PHP_VERSION-opcache" "php$PHP_VERSION-readline"
 
 
-a2dismod php7.1 # (or your current version) 
+a2dismod php$PHP_VERSION # (or your current version) 
 # enable new PHP $PHP_VERSION module with
 a2enmod "php$PHP_VERSION"
 
