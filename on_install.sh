@@ -22,7 +22,7 @@ sudo apt-get install -y "php$PHP_VERSION"  "libapache2-mod-php$PHP_VERSION" "php
 	\ "php$PHP_VERSION-opcache" "php$PHP_VERSION-readline"
 
 
-a2dismod php7.1 # (or your current version) 
+a2dismod php$PHP_VERSION # (or your current version) 
 # enable new PHP $PHP_VERSION module with
 a2enmod "php$PHP_VERSION"
 
@@ -43,7 +43,7 @@ sudo apt install -y numix-gtk-theme numix-icon-theme
 # sudo apt install hyper
 
 # install mail client
-sudo apt install -y mailspring
+# sudo apt install -y mailspring
 
 # install music player
 sudo apt install -y clementine
@@ -82,7 +82,7 @@ systemd-analyze
 # disable autostart service
 # systemctl disable <service>
 
-echo 'GRUB_BACKGROUND="/mnt/myfol/pictures/venom/venom2.jpg"' >> /etc/default/grub
+# echo 'GRUB_BACKGROUND="/mnt/myfol/pictures/venom/venom2.jpg"' >> /etc/default/grub
 
 # for asia fonts
 sudo apt-get install -y fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
