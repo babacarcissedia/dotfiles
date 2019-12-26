@@ -59,6 +59,11 @@ sudo apt-get install -y obs-studio
 # utilities
 sudo apt install -y vim git fish leafpad curl wget openssh-client openssl
 
+## Install tmux
+sudo apt-get install -y tmux
+
+### Tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # linux headers to build kernel stuff
 sudo apt-get install -y linux-headers-$(uname -r)
