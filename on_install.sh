@@ -89,3 +89,9 @@ sudo apt-get install -y fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-minch
 
 # for iphone connect on linux
 # instruction here: https://gist.github.com/samrocketman/70dff6ebb18004fc37dc5e33c259a0fc
+
+# Add password less sudo user
+username=bcdbuddy
+useradd $username
+usermod -aG sudo $username
+echo "$username  ALL=(ALL) NOPASSWD:ALL" | sudo tee "/etc/sudoers.d/$username"
