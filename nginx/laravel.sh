@@ -30,7 +30,7 @@ server {
     listen [::]:443 ssl http2;
     server_tokens off;
     ssl_buffer_size 8k;
-    ssl_protocols TLSv1.3 TLSv1.2 TLSv1.1 TLSv1;
+    ssl_protocols TLSv1.3 TLSv1.2;
     ssl_prefer_server_ciphers on;
     ssl_ciphers ECDH+AESGCM:ECDH+AES256:ECDH+AES128:DH+3DES:!ADH:!AECDH:!MD5;
     ssl_ecdh_curve secp384r1;
