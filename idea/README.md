@@ -2,9 +2,11 @@
 setups
 
 ## Plugins
-- php
 - material theme
 - rainbow bracket
+- php
+- blade
+- laravel
 
 ## Crack
 ```bash

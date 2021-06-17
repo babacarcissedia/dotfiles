@@ -1,0 +1,27 @@
+ThisCrackLicenseId-{  
+"licenseId":"ThisCrackLicenseId",  
+"licenseeName":"idea",  
+"assigneeName":"",  
+"assigneeEmail":"idea@163.com",  
+"licenseRestriction":"For This Crack, Only Test! Please support genuine!!!",  
+"checkConcurrentUse":false,  
+"products":[  
+{"code":"II","paidUpTo":"2099-12-31"},  
+{"code":"DM","paidUpTo":"2099-12-31"},  
+{"code":"AC","paidUpTo":"2099-12-31"},  
+{"code":"RS0","paidUpTo":"2099-12-31"},  
+{"code":"WS","paidUpTo":"2099-12-31"},  
+{"code":"DPN","paidUpTo":"2099-12-31"},  
+{"code":"RC","paidUpTo":"2099-12-31"},  
+{"code":"PS","paidUpTo":"2099-12-31"},  
+{"code":"DC","paidUpTo":"2099-12-31"},  
+{"code":"RM","paidUpTo":"2099-12-31"},  
+{"code":"CL","paidUpTo":"2099-12-31"},  
+{"code":"PC","paidUpTo":"2099-12-31"}  
+],  
+"hash":"2911276/0",  
+"gracePeriodDays":7,  
+"autoProlongated":false} 
+————————————————
+版权声明：本文为CSDN博主「676598624」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_26761229/article/details/79083197

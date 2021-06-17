@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "removing evaluation key"
-rm -rf ~/.IntelliJIdea*/config/eval
+rm -rf ~/IntelliJIdea*/config/eval
 rm -rf ~/.config/JetBrains/IntelliJIdea*/eval
 
 

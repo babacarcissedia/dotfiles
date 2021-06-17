@@ -1,7 +1,7 @@
 # install sudo | login as root for this to work
 apt install sudo
 
-# dev things 
+# dev things
 # sudo apt-get install -y apache2 php mysql
 # test configuration
 # sudo apachectl configtest
@@ -10,18 +10,18 @@ apt install sudo
 sudo apt install apt-transport-https lsb-release ca-certificates
 sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-sudo apt update 
+sudo apt update
 
 # php with some extensions
-PHP_VERSION=7.3
-sudo apt-get install -y "php$PHP_VERSION"  "libapache2-mod-php$PHP_VERSION" "php$PHP_VERSION-common" "php$PHP_VERSION-cli" "php$PHP_VERSION-fpm" "php$PHP_VERSION-zip" "php$PHP_VERSION-xml" "php$PHP_VERSION-pdo" "php$PHP_VERSION-mysql"  "php$PHP_VERSION-mbstring" "php$PHP_VERSION-tokenizer" "php$PHP_VERSION-ctype" "php$PHP_VERSION-curl"  "php$PHP_VERSION-common" "php$PHP_VERSION-curl" "php$PHP_VERSION-gd" "php$PHP_VERSION-intl" "php$PHP_VERSION-sqlite3" "php$PHP_VERSIOn-xmlrpc" "php$PHP_VERSION-xsl" "php$PHP_VERSION-soap" "php$PHP_VERSION-opcache" "php$PHP_VERSION-readline"
+PHP_VERSION=7.4
+sudo apt-get install -y "php$PHP_VERSION"  "libapache2-mod-php$PHP_VERSION" "php$PHP_VERSION-common" "php$PHP_VERSION-cli" "php$PHP_VERSION-fpm" "php$PHP_VERSION-zip" "php$PHP_VERSION-xml" "php$PHP_VERSION-pdo" "php$PHP_VERSION-mysql"  "php$PHP_VERSION-mbstring" "php$PHP_VERSION-tokenizer" "php$PHP_VERSION-ctype" "php$PHP_VERSION-curl"  "php$PHP_VERSION-common" "php$PHP_VERSION-curl" "php$PHP_VERSION-gd" "php$PHP_VERSION-intl" "php$PHP_VERSION-sqlite3" "php$PHP_VERSIOn-xmlrpc" "php$PHP_VERSION-xsl" "php$PHP_VERSION-soap" "php$PHP_VERSION-opcache" "php$PHP_VERSION-readline" "php$PHP_VERSION-xdebug"
 
-
-a2dismod php$PHP_VERSION # (or your current version) 
+OLD_PHP_VERSION=7.3
+sudo a2dismod php$OLD_PHP_VERSION # (or your current version)
 # enable new PHP $PHP_VERSION module with
-a2enmod "php$PHP_VERSION"
+sudo a2enmod "php$PHP_VERSION"
 
-# remove old version 
+# remove old version
 # sudo apt purge php7.1* # for example
 
 
@@ -79,7 +79,7 @@ sudo apt-get install lightdm -Y
 
 # custom grub background
 # echo 'GRUB_BACKGROUND="/mnt/myfol/pictures/venom/venom2.jpg"' >> /etc/default/grub
-## 
+##
 # sudo update-grub
 
 
