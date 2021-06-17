@@ -16,11 +16,6 @@ sudo apt update
 PHP_VERSION=7.4
 sudo apt-get install -y "php$PHP_VERSION"  "libapache2-mod-php$PHP_VERSION" "php$PHP_VERSION-common" "php$PHP_VERSION-cli" "php$PHP_VERSION-fpm" "php$PHP_VERSION-zip" "php$PHP_VERSION-xml" "php$PHP_VERSION-pdo" "php$PHP_VERSION-mysql"  "php$PHP_VERSION-mbstring" "php$PHP_VERSION-tokenizer" "php$PHP_VERSION-ctype" "php$PHP_VERSION-curl"  "php$PHP_VERSION-common" "php$PHP_VERSION-curl" "php$PHP_VERSION-gd" "php$PHP_VERSION-intl" "php$PHP_VERSION-sqlite3" "php$PHP_VERSIOn-xmlrpc" "php$PHP_VERSION-xsl" "php$PHP_VERSION-soap" "php$PHP_VERSION-opcache" "php$PHP_VERSION-readline" "php$PHP_VERSION-xdebug"
 
-OLD_PHP_VERSION=7.3
-sudo a2dismod php$OLD_PHP_VERSION # (or your current version)
-# enable new PHP $PHP_VERSION module with
-sudo a2enmod "php$PHP_VERSION"
-
 # remove old version
 # sudo apt purge php7.1* # for example
 
@@ -47,12 +42,11 @@ sudo apt install -y clementine
 sudo apt install -y evince
 
 # Obs Studio
-sudo apt-get install -y ffmpeg
-sudo apt-get install -y obs-studio
+sudo apt-get install -y ffmpeg obs-studio
 
 
 # utilities
-sudo apt install -y vim git fish leafpad curl wget openssh-client openssl
+sudo apt install -y xclip vim git fish leafpad curl wget openssh-client openssl
 
 ## Install tmux
 sudo apt-get install -y tmux
