@@ -2,7 +2,10 @@
 apt install sudo
 
 # dev things
-sudo apt-get install -y nginx php mysql-server mysql-client composer
+sudo apt-get install -y nginx php mysql-server mysql-client 
+git config --global user.email bcdbuddy@outlook.com
+git config --global user.name "Babacar Cissé DIA"
+
 # test configuration
 # nginx -t
 
