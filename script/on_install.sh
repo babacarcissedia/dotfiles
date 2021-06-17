@@ -2,11 +2,11 @@
 apt install sudo
 
 # dev things
-# sudo apt-get install -y apache2 php mysql
+sudo apt-get install -y nginx php mysql-server mysql-client composer
 # test configuration
-# sudo apachectl configtest
+# nginx -t
 
-# install for phpPHP_VERSION
+# install for php7.4
 sudo apt install apt-transport-https lsb-release ca-certificates
 sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
@@ -53,6 +53,7 @@ sudo apt-get install -y tmux
 
 ### Tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ln -s ~/dotfiles/tmux/dev ~/.tmux/
 
 # linux headers to build kernel stuff
 sudo apt-get install -y linux-headers-$(uname -r)
@@ -75,6 +76,10 @@ sudo apt-get install lightdm -Y
 # echo 'GRUB_BACKGROUND="/mnt/myfol/pictures/venom/venom2.jpg"' >> /etc/default/grub
 ##
 # sudo update-grub
+
+curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+sudo apt install ./keybase_amd64.deb
+run_keybase
 
 
 # for asia fonts
