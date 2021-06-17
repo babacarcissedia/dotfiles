@@ -2,9 +2,17 @@
 apt install sudo
 
 # dev things
-sudo apt-get install -y nginx php mysql-server mysql-client 
+sudo apt-get install -y nginx php mysql-server mysql-client
 git config --global user.email bcdbuddy@outlook.com
 git config --global user.name "Babacar Cissé DIA"
+
+## Install NVM
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+source ~/.bashrc
+nvm install 16
+nvm exec 16 npm i yarn -g
+
 
 # test configuration
 # nginx -t
@@ -112,3 +120,7 @@ echo "$username  ALL=(ALL) NOPASSWD:ALL" | sudo tee "/etc/sudoers.d/$username"
 
 # Start wifi hotspot for network "test_bcd" with password ... on "wlo1" interface
 # sudo nmcli dev wifi hotspot ifname wlo1 ssid test_bcd password 09869219
+
+## Aliases
+echo 'alias gss="git status -s"' >> ~/.bash_aliases
+
