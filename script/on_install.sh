@@ -1,14 +1,40 @@
 # install sudo | login as root for this to work
 apt install sudo
 
+# utilities
+sudo apt install -y xclip vim nano git fish leafpad curl wget openssh-client openssl stacer ulauncher
+
+
 # dev things
-sudo apt-get install -y nginx php mysql-server mysql-client
+## MySQL
+sudo apt-get install -y nginx mysql-server mysql-client
+
+## Docker
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    gnupg \
+    lsb-release
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
+### Docker post install config
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker # activate the group changes
+
+
+
+## Git
 git config --global user.email bcdbuddy@outlook.com
 git config --global user.name "Babacar Cissé DIA"
 
 ## Install NVM
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-
 source ~/.bashrc
 nvm install 16
 nvm exec 16 npm i yarn -g
@@ -18,10 +44,10 @@ nvm exec 16 npm i yarn -g
 # nginx -t
 
 # install for php7.4
-sudo apt install apt-transport-https lsb-release ca-certificates
-sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-sudo apt update
+#sudo apt install -y apt-transport-https lsb-release ca-certificates
+#sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+#sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+#sudo apt update
 
 # php with some extensions
 PHP_VERSION=7.4
@@ -55,16 +81,22 @@ sudo apt install -y evince
 # Obs Studio
 sudo apt-get install -y ffmpeg obs-studio
 
-
-# utilities
-sudo apt install -y xclip vim git fish leafpad curl wget openssh-client openssl
-
 ## Install tmux
 sudo apt-get install -y tmux
 
 ### Tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s ~/dotfiles/tmux/dev ~/.tmux/
+
+## Tmux - Configuration
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/tmux ~/tmux
+# Install tmux manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Reload TMUX environment so TPM is sourced:
+tmux source ~/.tmux.conf
+# Press prefix + I (capital i, as in Install) to fetch the plugin.
+
 
 # linux headers to build kernel stuff
 sudo apt-get install -y linux-headers-$(uname -r)
@@ -73,7 +105,7 @@ sudo apt-get install -y linux-headers-$(uname -r)
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 # install lightdm for login screen (greater) [more customizeable]
-sudo apt-get install lightdm -Y
+sudo apt-get install -y lightdm
 #leafpad /etc/lightdm/lightdm-gtk-greeter.conf
 
 # to show system boot time
@@ -89,7 +121,7 @@ sudo apt-get install lightdm -Y
 # sudo update-grub
 
 curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
-sudo apt install ./keybase_amd64.deb
+sudo apt install -y ./keybase_amd64.deb
 run_keybase
 
 
@@ -101,22 +133,22 @@ sudo apt-get install -y ttf-ancient-fonts ttf-bitstream-vera
 
 
 ## 1. Download the latest version
-wget https://github.com/eosrei/emojione-color-font/releases/download/v1.4/EmojiOneColor-SVGinOT-Linux-1.4.tar.gz
+# wget https://github.com/eosrei/emojione-color-font/releases/download/v1.4/EmojiOneColor-SVGinOT-Linux-1.4.tar.gz
 ## 2. Uncompress the file
-tar zxf EmojiOneColor-SVGinOT-Linux-1.4.tar.gz
+#tar zxf EmojiOneColor-SVGinOT-Linux-1.4.tar.gz
 ## 3. Run the installer
-cd EmojiOneColor-SVGinOT-Linux-1.4
-./install.sh
+#cd EmojiOneColor-SVGinOT-Linux-1.4
+#./install.sh
+#rm install.sh
 
 
 # for iphone connect on linux
 # instruction here: https://gist.github.com/samrocketman/70dff6ebb18004fc37dc5e33c259a0fc
 
 # Add password less sudo user
-username=bcdbuddy
-useradd $username
-usermod -aG sudo $username
-echo "$username  ALL=(ALL) NOPASSWD:ALL" | sudo tee "/etc/sudoers.d/$username"
+useradd $USER
+usermod -aG sudo $USER
+echo "$USER  ALL=(ALL) NOPASSWD:ALL" | sudo tee "/etc/sudoers.d/$USER"
 
 # Start wifi hotspot for network "test_bcd" with password ... on "wlo1" interface
 # sudo nmcli dev wifi hotspot ifname wlo1 ssid test_bcd password 09869219
