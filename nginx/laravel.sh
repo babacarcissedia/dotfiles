@@ -1,5 +1,10 @@
+# Usage ./laravel.sh site.domain 7.4 ~/sites
+## Dependencies: letsencrypt, php$php_version, php$php_version-fpm
+
+# sudo apt-get install -y php$php_version php$php_version-fpm
 name=$1 # site.domain
-fastcgi_pass=${2:-'unix:/run/php/php7.3-fpm.sock'}
+php_version=${2:-'7.4'}
+webroot=${3:-'/var/www/html'}
 cat >> /etc/nginx/sites-available/$name.conf << EOF
 
 # Force HTTPS
@@ -47,9 +52,9 @@ server {
     # End of SSL config
 
     index index.php index.html;
-    error_log /var/www/html/$name/storage/logs/error.log;
-    access_log /var/www/html/$name/storage/logs/access.log;
-    root /var/www/html/$name/public;
+    error_log $webroot/$name/storage/logs/error.log;
+    access_log $webroot/$name/storage/logs/access.log;
+    root $webroot/$name/public;
     error_page 404 /index.php;
 
     location / {
@@ -65,7 +70,7 @@ server {
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass $fastcgi_pass;
+        fastcgi_pass unix:/run/php/php$php_version-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
