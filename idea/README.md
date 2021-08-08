@@ -7,6 +7,7 @@ setups
 - php
 - blade
 - laravel
+- string manipulation
 
 ## Crack
 ```bash
