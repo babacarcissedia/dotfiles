@@ -13,8 +13,7 @@ ln -S ~/dotfiles ~/
 ./dev/composer/install.sh
 ./dev/php/install.sh
 ./dev/nginx/install.sh
+./dev/nginx/laravel.sh $domain
 ./dev/nginx/ssl.sh $domain
 
-# nginx config for $domain
-# ./dev/nginx/laravel.sh $domain
 ```

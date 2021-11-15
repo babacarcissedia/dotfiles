@@ -53,6 +53,13 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
     # End of SSL config
 
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+    add_header X-XSS-Protection "1; mode=block";
+
+    charset utf-8;
+
     index index.php index.html;
     error_log $webroot/$name/storage/logs/error.log;
     access_log $webroot/$name/storage/logs/access.log;
@@ -85,13 +92,14 @@ server {
         fastcgi_read_timeout 3000;
     }
 
-    location ~ /\.ht {
+    location ~ /\.(?!well-known).* {
         deny all;
     }
 
-    location ~ /.well-known {
-        allow all;
-    }
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location = /robots.txt  { access_log off; log_not_found off; }
+
 }
 EOF
 

@@ -10,7 +10,8 @@ echo "resetting evalsprt in options.xml"
 sed -i '/evlsprt/d' "$CONFIG_PATH/options/options.xml"
 
 echo "removing key"
-sed -i '/evlsprt/d' "$CONFIG_PATH/idea13.key"
+rm "$CONFIG_PATH/idea*.key"
+
 
 echo "resetting evalsprt in other.xml"
 sed -i '/evlsprt/d' "$CONFIG_PATH/options/other.xml"
@@ -20,7 +21,7 @@ echo "resetting evalsprt in prefs.xml"
 echo "just remove the whole directory java user prefs"
 ## Need to double check if there is anything inside that needs
 ##   to be taken care of. Example: google directory
-# rm -fr ~/.java/.userPrefs
+## rm -fr ~/.java/.userPrefs
 
 echo "Removing lock"
 rm -fr ~/.java/.userPrefs/.user.lock*
@@ -34,5 +35,5 @@ rm -rf ~/.local/share/JetBrains/consentOptions
 
 
 echo "change date file"
-find ~/.IntelliJIdea* -type d -exec touch -t $(date +"%Y%m%d%H%M") {} +;
-find ~/.IntelliJIdea* -type f -exec touch -t $(date +"%Y%m%d%H%M") {} +;
+find $CONFIG_PATH/* -type d -exec touch -t $(date +"%Y%m%d%H%M") {} +;
+find $CONFIG_PATH/* -type f -exec touch -t $(date +"%Y%m%d%H%M") {} +;
