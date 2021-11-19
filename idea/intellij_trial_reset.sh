@@ -17,7 +17,7 @@ echo "resetting evalsprt in other.xml"
 sed -i '/evlsprt/d' "$CONFIG_PATH/options/other.xml"
 
 echo "resetting evalsprt in prefs.xml"
-# sed -i '/evlsprt/d' ~/.java/.userPrefs/jetbrains/idea/prefs.xml
+# sed -i '/evlsprt/d' ~/.java/.userPrefs/jetbrains/idea
 echo "just remove the whole directory java user prefs"
 ## Need to double check if there is anything inside that needs
 ##   to be taken care of. Example: google directory
@@ -28,6 +28,7 @@ rm -fr ~/.java/.userPrefs/.user.lock*
 echo "Removing prefs"
 rm -fr ~/.java/.userPrefs/prefs.xml
 rm -fr ~/.java/.userPrefs/jetbrains/prefs.xml
+rm -fr ~/.java/.userPrefs/idea/prefs.xml
 
 echo "Removing consent"
 rm -rf ~/.local/share/JetBrains/consentOptions
