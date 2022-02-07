@@ -65,12 +65,12 @@ server {
     access_log $webroot/$name/storage/logs/access.log;
     root $webroot/$name/public;
     error_page 404 /index.php;
-    
-    
+
+
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-Content-Type-Options "nosniff";
-    
-    
+
+
     location = /favicon.ico { access_log off; log_not_found off; }
     location = /robots.txt  { access_log off; log_not_found off; }
 
@@ -85,7 +85,7 @@ server {
     }
 
     location ~ \.php$ {
-        try_files \$uri =404;
+        try_files \$uri /index.php =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass unix:/run/php/php$php_version-fpm.sock;
         fastcgi_index index.php;
@@ -104,10 +104,7 @@ server {
         deny all;
     }
 
-    location = /favicon.ico { access_log off; log_not_found off; }
-
-    location = /robots.txt  { access_log off; log_not_found off; }
-
+    client_max_body_size 128m;
 }
 EOF
 
