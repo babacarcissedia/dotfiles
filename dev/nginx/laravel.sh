@@ -112,3 +112,9 @@ sudo chgrp -R www-data storage bootstrap/cache
 sudo chmod -R ug+rwx storage bootstrap/cache
 sudo chown -R $USER:www-data .
 
+
+cat /etc/php/$php_version/cli/php.ini >> EOF
+post_max_size=128M
+upload_max_filesize=128M
+max_upload_file=50
+EOF
