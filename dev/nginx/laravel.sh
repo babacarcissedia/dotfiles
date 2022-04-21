@@ -109,6 +109,11 @@ server {
 EOF
 
 sudo chgrp -R www-data storage bootstrap/cache
-sudo chmod -R ug+rwx storage bootstrap/cache
-sudo chown -R $USER:www-data .
+find storage -type d -exec chmod o-rwx {} \;
+find storage -type f -exec chmod -x {} \;
+
+# Check file exists
+# /etc/ssl/dhparams.pem
+# Generate if not
+# openssl dhparam -out /etc/ssl/dhparams.pem 4096
 

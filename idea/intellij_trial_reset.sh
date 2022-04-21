@@ -18,12 +18,13 @@ sed -i '/evlsprt/d' "$CONFIG_PATH/options/other.xml"
 
 echo "resetting evalsprt in prefs.xml"
 # sed -i '/evlsprt/d' ~/.java/.userPrefs/jetbrains/idea
-rm ~/.java/.userPrefs/jetbrains/idea
+# there is a folder named after a random string with single quote to be removed
+# contains randomly generated file _!(!!cg"p!(}!}@"j!(k!|w"w!'\''8!b!"p!'\'':!e@==
+rm -fr ~/.java/.userPrefs/jetbrains
 echo "just remove the whole directory java user prefs"
 ## Need to double check if there is anything inside that needs
 ##   to be taken care of. Example: google directory
 ## rm -fr ~/.java/.userPrefs
-## TODO: there is a folder named after a random string with single quote to be removed
 
 echo "Removing lock"
 rm -fr ~/.java/.userPrefs/.user.lock*
