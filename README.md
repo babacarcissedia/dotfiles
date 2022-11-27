@@ -2,8 +2,7 @@
 
 ## Installation
 ```bash
-git clone git@github.com:bcdbuddy/dotfiles.git ~/dotfiles
-ln -S ~/dotfiles ~/
+git clone git@github.com:babacarcissedia/dotfiles.git ~/dotfiles
 ```
 
 ## Dev
