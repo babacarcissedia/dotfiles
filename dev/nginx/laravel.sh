@@ -108,13 +108,9 @@ server {
 }
 EOF
 
-sudo chgrp -R www-data storage bootstrap/cache
-find storage -type d -exec chmod o-rwx {} \;
-find storage -type f -exec chmod -x {} \;
-
-#
-sudo find . -type f -exec chmod 664 {} \;
-sudo find . -type d -exec chmod 775 {} \;
+# permissions
+sudo find storage -type f -exec chmod 664 {} \;
+sudo find storage -type d -exec chmod 775 {} \;
 sudo chmod -R ug+rwx storage bootstrap/cache
 sudo chgrp -R www-data storage bootstrap/cache
 
