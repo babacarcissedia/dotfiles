@@ -3,6 +3,7 @@
 
 # sudo apt-get install -y php$php_version php$php_version-fpm
 name=$1 # site.domain
+user=$(USER)
 php_version=${2:-'7.4'}
 webroot=${3:-'/var/www/html'}
 touch /etc/nginx/sites-available/$name.conf
@@ -113,6 +114,8 @@ sudo find storage -type f -exec chmod 664 {} \;
 sudo find storage -type d -exec chmod 775 {} \;
 sudo chmod -R ug+rwx storage bootstrap/cache
 sudo chgrp -R www-data storage bootstrap/cache
+sudo usermod -aG $(user) www-data
+sudo chown $(user):www-data -R storage bootstrap/cache
 
 # Check file exists
 # /etc/ssl/dhparams.pem
