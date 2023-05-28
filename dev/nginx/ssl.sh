@@ -19,5 +19,7 @@ ln -s "/etc/letsencrypt/live/$domain/fullchain.pem" /etc/ssl/certs/iRedMail.crt
 # sudo certbot --nginx --email $email -d $domain -d www.$domain
 
 ## Renew command
-# sudo certbot certonly --nginx -d $domain -d www.$domain
+# crontab -e
+# 0 12 * * * /usr/bin/certbot renew --quiet
+
 
