@@ -115,7 +115,7 @@ sudo find storage -type d -exec chmod 775 {} \;
 sudo chmod -R ug+rwx storage bootstrap/cache
 sudo chgrp -R www-data storage bootstrap/cache
 sudo usermod -aG $user www-data
-sudo chown $(user):www-data -R storage bootstrap/cache
+sudo chown $user:www-data -R storage bootstrap/cache
 
 # Check file exists
 # /etc/ssl/dhparams.pem
