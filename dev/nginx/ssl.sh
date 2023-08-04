@@ -20,6 +20,6 @@ ln -s "/etc/letsencrypt/live/$domain/fullchain.pem" /etc/ssl/certs/iRedMail.crt
 
 ## Renew command
 # crontab -e
-# 0 12 * * * /usr/bin/certbot renew --quiet
+# 0 0 1 */3 * /usr/bin/certbot renew --quiet
 
 
