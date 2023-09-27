@@ -1,10 +1,10 @@
-# Usage ./laravel.sh site.domain 7.4 ~/sites
+# Usage ./laravel.sh site.domain 8.2 ~/sites
 ## Dependencies: letsencrypt, php$php_version, php$php_version-fpm
 
 # sudo apt-get install -y php$php_version php$php_version-fpm
 name=$1 # site.domain
 user=$(USER)
-php_version=${2:-'7.4'}
+php_version=${2:-'8.2'}
 webroot=${3:-'/var/www/html'}
 touch /etc/nginx/sites-available/$name.conf
 ln -s /etc/nginx/sites-available/$name.conf /etc/nginx/sites-enabled/$name.conf
