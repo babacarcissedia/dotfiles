@@ -5,7 +5,7 @@
 name=$1 # site.domain
 user=$(USER)
 php_version=${2:-'8.2'}
-webroot=${3:-'/var/www/vhosts/$name'}
+webroot=${3:-'/var/www/vhosts/$name/public'}
 touch /etc/nginx/sites-available/$name.conf
 ln -s /etc/nginx/sites-available/$name.conf /etc/nginx/sites-enabled/$name.conf
 
