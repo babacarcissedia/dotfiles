@@ -11,6 +11,7 @@ ln -s /etc/nginx/sites-available/$name.conf /etc/nginx/sites-enabled/$name.conf
 
 mkdir -p /var/www/vhosts/$name/storage/logs
 touch /var/www/vhosts/$name/storage/logs/error.log
+touch /var/www/vhosts/$name/storage/logs/access.log
 
 cat >> /etc/nginx/sites-available/$name.conf << EOF
 
