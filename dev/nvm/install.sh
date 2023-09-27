@@ -1,4 +1,4 @@
-version=${1:-'16'}
+version=${1:-'18'}
 echo "Installing nvm + node $version"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 source ~/.bashrc
