@@ -2,7 +2,6 @@ domain=$1
 email=${2:-"babacarcissedia@gmail.com"}
 sudo apt-get install -y python3-certbot-nginx
 
-certbot certonly -a manual --rsa-key-size 4096 --email $email -d $domain -d www.$domain
 
 
 ## Might be the renew
@@ -15,8 +14,12 @@ mv /etc/ssl/private/iRedMail.key{,.bak}
 ln -s "/etc/letsencrypt/live/$domain/privkey.pem" /etc/ssl/private/iRedMail.key
 ln -s "/etc/letsencrypt/live/$domain/fullchain.pem" /etc/ssl/certs/iRedMail.crt
 
+# manual
+# certbot certonly -a manual --rsa-key-size 4096 --email $email -d $domain -d www.$domain
+
+# auto
 ## With base nginx config
-# sudo certbot --nginx --email $email -d $domain -d www.$domain
+certbot certonly --nginx --rsa-key-size 4096 --email $email -d $domain -d www.$domain
 
 ## Renew command
 # crontab -e
