@@ -8,6 +8,10 @@ php_version=${2:-'8.2'}
 webroot=${3:-'/var/www/html'}
 touch /etc/nginx/sites-available/$name.conf
 ln -s /etc/nginx/sites-available/$name.conf /etc/nginx/sites-enabled/$name.conf
+
+mkdir -p /var/www/vhosts/$name/storage/logs
+touch /var/www/vhosts/$name/storage/logs/error.log
+
 cat >> /etc/nginx/sites-available/$name.conf << EOF
 
 # Force HTTPS
