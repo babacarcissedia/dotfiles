@@ -111,6 +111,8 @@ server {
     }
 
     client_max_body_size 128m;
+    # For unlimited
+    # client_max_body_size 0;
 }
 EOF
 
