@@ -111,6 +111,15 @@ server {
         deny all;
     }
 
+    # Define caching rules for static images
+    location ~* \.(jpg|jpeg|png|gif|ico)$ {
+        expires 30d; # adjust the caching duration as needed
+        add_header Cache-Control "public, max-age=2592000";
+    }
+
+    gzip on;
+    gzip_types text/plain text/css application/javascript image/*;
+
     client_max_body_size 128m;
     # For unlimited
     # client_max_body_size 0;
