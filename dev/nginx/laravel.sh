@@ -3,10 +3,10 @@
 
 # sudo apt-get install -y php$php_version php$php_version-fpm
 name=$1 # site.domain
-user=$(USER)
-php_version=${2:-'8.2'}
-root=${3:-'/var/www/vhosts/$name'}
-webroot=${4:-'/var/www/vhosts/$name/public'}
+user=$2
+php_version=${3:-'8.2'}
+root=${4:-"/var/www/vhosts/$name"}
+webroot=${5:-"/var/www/vhosts/$name/public"}
 touch /etc/nginx/sites-available/$name.conf
 ln -s /etc/nginx/sites-available/$name.conf /etc/nginx/sites-enabled/$name.conf
 
