@@ -16,3 +16,7 @@ redirect_stderr=true
 stdout_logfile=${root_dir}/storage/logs/worker.log
 stopwaitsecs=3600
 EOF
+
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start all
