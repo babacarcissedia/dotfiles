@@ -64,6 +64,14 @@ server {
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-Content-Type-Options "nosniff";
     add_header X-XSS-Protection "1; mode=block";
+    add_header 'Content-Security-Policy' 'upgrade-insecure-requests';
+
+
+    # GZIP
+    gzip on;
+    gzip_min_size 100; # min size 100kb
+    gzip_comp_level 7; # 1-9
+    gzip_types text/plain text/css application/javascript image/*;
 
     charset utf-8;
 
@@ -72,10 +80,6 @@ server {
     access_log $root/storage/logs/access.log;
     root $webroot;
     error_page 404 /index.php;
-
-
-    add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-Content-Type-Options "nosniff";
 
 
     location = /favicon.ico { access_log off; log_not_found off; }
@@ -116,9 +120,6 @@ server {
         expires 30d; # adjust the caching duration as needed
         add_header Cache-Control "public, max-age=2592000";
     }
-
-    gzip on;
-    gzip_types text/plain text/css application/javascript image/*;
 
     client_max_body_size 128m;
     # For unlimited
