@@ -72,6 +72,22 @@ server {
     gzip_min_size 100; # min size 100kb
     gzip_comp_level 7; # 1-9
     gzip_types text/plain text/css application/javascript image/*;
+    
+    # Media: images, icons, video, audio, HTC
+    location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|mp3|ogg|ogv|webm|htc|woff2|woff)$ {
+        expires 1M;
+        access_log off;
+        # max-age must be in seconds
+        add_header Cache-Control "max-age=2629746, public";
+    }
+
+    # CSS and Javascript
+    location ~* \.(?:css|js)$ {
+        expires 1y;
+        access_log off;
+        # max-age must be in seconds
+        add_header Cache-Control "max-age=31556952, public";
+    }
 
     charset utf-8;
 
@@ -113,12 +129,6 @@ server {
 
     location ~ /\.(?!well-known).* {
         deny all;
-    }
-
-    # Define caching rules for static images
-    location ~* \.(jpg|jpeg|png|gif|ico)$ {
-        expires 30d; # adjust the caching duration as needed
-        add_header Cache-Control "public, max-age=2592000";
     }
 
     client_max_body_size 128m;
