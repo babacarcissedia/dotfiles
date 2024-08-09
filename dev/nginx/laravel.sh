@@ -69,7 +69,7 @@ server {
 
     # GZIP
     gzip on;
-    gzip_min_size 100; # min size 100kb
+    gzip_min_length 100; # min size 100kb
     gzip_comp_level 7; # 1-9
     gzip_types text/plain text/css application/javascript image/*;
     
