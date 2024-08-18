@@ -6,7 +6,6 @@ cat >> "/etc/nginx/sites-available/$name.conf" << EOF
 
 server {
     listen 80 default_server;
-    listen [::]:80 default_server;
     root $webroot;
     server_name $name www.$name;
 }
