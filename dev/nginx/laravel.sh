@@ -1,29 +1,29 @@
-touch /etc/nginx/sites-available/$DOMAIN.conf
-ln -s /etc/nginx/sites-available/$DOMAIN.conf /etc/nginx/sites-enabled/$DOMAIN.conf
+touch "/etc/nginx/sites-available/$DOMAIN.conf"
+ln -s "/etc/nginx/sites-available/$DOMAIN.conf" "/etc/nginx/sites-enabled/$DOMAIN.conf"
 
-mkdir -p /var/www/vhosts/$DOMAIN/storage/logs
-touch /var/www/vhosts/$DOMAIN/storage/logs/error.log
-touch /var/www/vhosts/$DOMAIN/storage/logs/access.log
+mkdir -p "/var/www/vhosts/$DOMAIN/storage/logs"
+touch "/var/www/vhosts/$DOMAIN/storage/logs/error.log"
+touch "/var/www/vhosts/$DOMAIN/storage/logs/access.log"
 
-cat >> /etc/nginx/sites-available/$DOMAIN.conf << EOF
+cat >> "/etc/nginx/sites-available/$DOMAIN.conf" << EOF
 
 # Force HTTPS
 server {
-listen 80;
-listen [::]:80;
-server_name $DOMAIN www.$DOMAIN;
-return 301 https://$DOMAIN\$request_uri;
+    listen 80;
+    listen [::]:80;
+    server_name $DOMAIN www.$DOMAIN;
+    return 301 https://$DOMAIN\$request_uri;
 }
 
 # Force www less version'
 server {
-listen 443 ssl http2;
-listen [::]:443 ssl http2;
-server_name www.$DOMAIN;
-ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
-ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
-ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-return 301 https://$DOMAIN\$request_uri;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name www.$DOMAIN;
+    ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    return 301 https://$DOMAIN\$request_uri;
 }
 
 
