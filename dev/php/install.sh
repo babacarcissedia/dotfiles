@@ -8,6 +8,5 @@ sudo add-apt-repository ppa:ondrej/php
 sudo apt update
 
 # php with some extensions
-PHP_VERSION=${1:-'8.2'}
 sudo apt-get install -y "php$PHP_VERSION" php$PHP_VERSION-{common,cli,fpm,zip,xml,pdo,mysql,mbstring,tokenizer,ctype,curl,common,curl,gd,intl,sqlite3,xmlrpc,xsl,soap,opcache,readline,xdebug,bcmath}
 
