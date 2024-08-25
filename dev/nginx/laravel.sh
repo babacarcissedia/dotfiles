@@ -1,43 +1,36 @@
-# Usage ./laravel.sh site.domain 8.2 ~/sites
-## Dependencies: letsencrypt, php$php_version, php$php_version-fpm
+$APP_USER=$2
+APP_ROOT="/var/www/vhosts/$DOMAIN"
+touch /etc/nginx/sites-available/$DOMAIN.conf
+ln -s /etc/nginx/sites-available/$DOMAIN.conf /etc/nginx/sites-enabled/$DOMAIN.conf
 
-# sudo apt-get install -y php$php_version php$php_version-fpm
-name=$1 # site.domain
-user=$2
-php_version=${3:-'8.2'}
-root=${4:-"/var/www/vhosts/$name"}
-webroot=${5:-"/var/www/vhosts/$name/public"}
-touch /etc/nginx/sites-available/$name.conf
-ln -s /etc/nginx/sites-available/$name.conf /etc/nginx/sites-enabled/$name.conf
+mkdir -p /var/www/vhosts/$DOMAIN/storage/logs
+touch /var/www/vhosts/$DOMAIN/storage/logs/error.log
+touch /var/www/vhosts/$DOMAIN/storage/logs/access.log
 
-mkdir -p /var/www/vhosts/$name/storage/logs
-touch /var/www/vhosts/$name/storage/logs/error.log
-touch /var/www/vhosts/$name/storage/logs/access.log
-
-cat >> /etc/nginx/sites-available/$name.conf << EOF
+cat >> /etc/nginx/sites-available/$DOMAIN.conf << EOF
 
 # Force HTTPS
 server {
-  listen 80;
-  listen [::]:80;
-  server_name $name www.$name;
-  return 301 https://$name\$request_uri;
+listen 80;
+listen [::]:80;
+server_name $DOMAIN www.$DOMAIN;
+return 301 https://$DOMAIN\$request_uri;
 }
 
 # Force www less version'
 server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name www.$name;
-    ssl_certificate /etc/letsencrypt/live/$name/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/$name/privkey.pem;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-    return 301 https://$name\$request_uri;
+listen 443 ssl http2;
+listen [::]:443 ssl http2;
+server_name www.$DOMAIN;
+ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
+ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+return 301 https://$DOMAIN\$request_uri;
 }
 
 
 server {
-    server_name $name;
+    server_name $DOMAIN;
 
     # SSL config
     listen 443 ssl http2;
@@ -55,8 +48,8 @@ server {
     ssl_stapling_verify on;
     resolver 8.8.8.8 8.8.4.4;
 
-    ssl_certificate /etc/letsencrypt/live/$name/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/$name/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
     # End of SSL config
 
@@ -92,9 +85,9 @@ server {
     charset utf-8;
 
     index index.php index.html;
-    error_log $root/storage/logs/error.log;
-    access_log $root/storage/logs/access.log;
-    root $webroot;
+    error_log $APP_ROOT/storage/logs/error.log;
+    access_log $APP_ROOT/storage/logs/access.log;
+    root $WEBROOT;
     error_page 404 /index.php;
 
 
@@ -114,7 +107,7 @@ server {
     location ~ \.php$ {
         try_files \$uri /index.php =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/run/php/php$php_version-fpm.sock;
+        fastcgi_pass unix:/run/php/php$PHP_VERSION-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
@@ -142,8 +135,8 @@ sudo find storage -type f -exec chmod 664 {} \;
 sudo find storage -type d -exec chmod 775 {} \;
 sudo chmod -R ug+rwx storage bootstrap/cache
 sudo chgrp -R www-data storage bootstrap/cache
-sudo usermod -aG $user www-data
-sudo chown $user:www-data -R storage bootstrap/cache
+sudo usermod -aG $APP_USER www-data
+sudo chown $APP_USER:www-data -R storage bootstrap/cache
 
 # Check file exists
 # /etc/ssl/dhparams.pem
@@ -151,7 +144,7 @@ sudo chown $user:www-data -R storage bootstrap/cache
 # openssl dhparam -out /etc/ssl/dhparams.pem 4096
 
 
-cat >> /etc/php/$php_version/cli/php.ini << EOF
+cat >> /etc/php/$PHP_VERSION/cli/php.ini << EOF
 post_max_size=128M
 upload_max_filesize=128M
 max_upload_file=50
