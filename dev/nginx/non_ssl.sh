@@ -1,12 +1,11 @@
-name=$1 # site.domain
-webroot=${3:-"/var/www/vhosts/$name"}
-touch "/etc/nginx/sites-available/$name.conf"
-ln -s "/etc/nginx/sites-available/$name.conf" "/etc/nginx/sites-enabled/$name.conf"
-cat >> "/etc/nginx/sites-available/$name.conf" << EOF
+
+touch "/etc/nginx/sites-available/$DOMAIN.conf"
+ln -s "/etc/nginx/sites-available/$DOMAIN.conf" "/etc/nginx/sites-enabled/$DOMAIN.conf"
+cat >> "/etc/nginx/sites-available/$DOMAIN.conf" << EOF
 
 server {
     listen 80 default_server;
-    root $webroot;
-    server_name $name www.$name;
+    root $WEBROOT;
+    server_name $DOMAIN www.$DOMAIN;
 }
 EOF
