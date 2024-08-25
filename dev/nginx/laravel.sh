@@ -1,5 +1,3 @@
-$APP_USER=$2
-APP_ROOT="/var/www/vhosts/$DOMAIN"
 touch /etc/nginx/sites-available/$DOMAIN.conf
 ln -s /etc/nginx/sites-available/$DOMAIN.conf /etc/nginx/sites-enabled/$DOMAIN.conf
 
