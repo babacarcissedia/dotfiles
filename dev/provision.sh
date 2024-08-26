@@ -1,13 +1,13 @@
 DOMAIN=$1 # bcd.dev
 DB_HOST="127.0.0.1"
-DB_DATABASE=$2
-DB_USERNAME=${2:-$DB_DATABASE}
-DB_PASSWORD=${3:-$DB_DATABASE}
-PHP_VERSION='8.2'
-APP_USER=bcd_dev
+DB_DATABASE="bcd_dev"
+DB_USERNAME=$DB_DATABASE
+DB_PASSWORD=$DB_DATABASE
+PHP_VERSION="8.2"
+APP_USER="bcd_dev"
 APP_ROOT="/var/www/vhosts/$DOMAIN"
 WEBROOT="/var/www/vhosts/$DOMAIN/public"
-WEBMASTER_EMAIL="babacarcissedia@gmail.com"
+WEBMASTER_EMAIL="bcdbuddy@outlook.com"
 
 
 # Create swap space
