@@ -12,7 +12,7 @@ WEBMASTER_EMAIL="bcdbuddy@outlook.com"
 
 # Create swap space
 total_ram=$(free -m | grep Mem: | awk '{print $2}')
-sudo fallocate -l $(total_ram)M /swamfile
+sudo fallocate -l "$(total_ram)M" /swamfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
