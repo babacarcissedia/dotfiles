@@ -31,6 +31,7 @@ apt-get install -y software-properties-common unattended-upgrades vim zip unzip 
 ./mysql/init.sh
 
 ./nginx/install.sh
-./nginx/non_ssl.sh
+./nginx/laravel.sh
+./nginx/permissions.sh
 
 ./supervisor.sh
