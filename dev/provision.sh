@@ -8,6 +8,7 @@ APP_USER="bcd_dev"
 APP_ROOT="/var/www/vhosts/$DOMAIN"
 WEBROOT="/var/www/vhosts/$DOMAIN/public"
 WEBMASTER_EMAIL="bcdbuddy@outlook.com"
+REPO=git@github.com:user/repo.git
 
 
 # Create swap space
@@ -24,6 +25,13 @@ apt upgrade -y
 apt-get install -y software-properties-common unattended-upgrades vim zip unzip expect
 
 adduser $APP_USER
+
+mkdir -p /var/www/hosts/$DOMAIN
+login $APP_USER
+chown -R $APP_USER /var/www/vhosts/$DOMAIN
+ssh-keygen -t rsa -b 4096
+cat ~/.ssh/id_rsa.pub
+git clone $REPO /var/www/hosts/$DOMAIN
 
 ./php/install.sh
 
