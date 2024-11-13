@@ -23,6 +23,8 @@ apt upgrade -y
 
 apt-get install -y software-properties-common unattended-upgrades vim zip unzip expect
 
+adduser $APP_USER
+
 ./php/install.sh
 
 ./composer/install.sh
