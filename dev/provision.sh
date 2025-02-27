@@ -27,8 +27,11 @@ apt-get install -y software-properties-common unattended-upgrades vim zip unzip 
 adduser $APP_USER
 
 mkdir -p /var/www/hosts/$DOMAIN
-login $APP_USER
 chown -R $APP_USER /var/www/vhosts/$DOMAIN
+login $APP_USER
+APP_USER=$USER
+# Define again as this is a different bash
+DOMAIN=
 ssh-keygen -t rsa -b 4096
 cat ~/.ssh/id_rsa.pub
 git clone $REPO /var/www/hosts/$DOMAIN
@@ -36,6 +39,7 @@ git clone $REPO /var/www/hosts/$DOMAIN
 ./php/install.sh
 
 ./composer/install.sh
+./nvm/install.sh
 
 ./mysql/install.sh
 ./mysql/init.sh
