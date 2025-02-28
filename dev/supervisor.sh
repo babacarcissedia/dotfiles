@@ -1,7 +1,7 @@
 #! /bin/bash
 user=${0:-$(USER)}
 root_dir="/home/$user/www/"
-processes=4
+processes=1
 sudo apt-get install -y supervisor
 
 cat >> /etc/supervisor/conf.d/laravel-worker.conf << EOF
