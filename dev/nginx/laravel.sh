@@ -66,7 +66,7 @@ server {
     
     # Media: css, js, images, icons, video, audio, HTC
     location ~* \.(?:css|js|xml|jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|mp3|ogg|ogv|webm|webp|ttf|htc|woff2|woff)$ {
-        try_files $uri /index.php?$query_string;
+        try_files \$uri /index.php?\$query_string;
         expires 14d;
         access_log off;
         log_not_found off;
