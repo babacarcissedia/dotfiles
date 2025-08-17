@@ -26,7 +26,7 @@ apt-get install -y software-properties-common unattended-upgrades vim zip unzip 
 
 adduser $APP_USER
 
-mkdir -p /var/www/hosts/$DOMAIN
+mkdir -p /var/www/vhosts/$DOMAIN
 chown -R $APP_USER /var/www/vhosts/$DOMAIN
 login $APP_USER
 APP_USER=$USER
