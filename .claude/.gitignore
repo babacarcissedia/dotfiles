@@ -1,0 +1,28 @@
+# Ignore everything by default
+*
+
+# Track config
+!.gitignore
+!settings.json
+!settings.local.json
+
+# Track music
+!music/
+!music/**
+
+# Track custom skills
+!skills/
+!skills/**
+
+# Track project memory files only
+!projects/
+!projects/*/
+!projects/*/memory/
+!projects/*/memory/**
+
+# Ignore everything else in projects
+projects/*/*.jsonl
+projects/*/subagents/
+projects/*/*.txt
+
+# Ignore plugins (managed by Claude Code)

@@ -1,0 +1,35 @@
+{
+  "enabledPlugins": {
+    "expo-app-design@expo-plugins": true,
+    "expo-deployment@expo-plugins": true,
+    "upgrading-expo@expo-plugins": true,
+    "media-tools@/Users/babacar/myfol/workpaces/studios-neptune/traxelio/.claude/skills/media-tools": true,
+    "frontend-design@claude-plugins-official": true
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/music/play.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/music/stop.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

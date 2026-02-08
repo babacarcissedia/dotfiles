@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:traxelio.com)",
+      "WebFetch(domain:www.traccar.org)"
+    ]
+  }
+}
